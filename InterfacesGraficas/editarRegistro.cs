@@ -53,12 +53,10 @@ namespace InterfacesGraficas
                 {
                     try
                     {
-                        // Obtener los nuevos valores
                         string nombreTarea = txt2NombreTarea.Text;
                         string descripcionTarea = txt2DescripcionTarea.Text;
                         string estadoTarea = cbox2EstadoTarea.SelectedItem.ToString();
 
-                        // Usamos el nombre de la tarea para hacer la actualización
                         string query = "UPDATE Tareas SET Nombre = @nombre, Descripcion = @descripcion, Estado = @estado WHERE Nombre = @nombreTarea";
 
                         using (SqlConnection conn = new SqlConnection(conexiondb.ObtenerCadenaConexion()))
@@ -67,19 +65,18 @@ namespace InterfacesGraficas
                             cmd.Parameters.AddWithValue("@nombre", nombreTarea);
                             cmd.Parameters.AddWithValue("@descripcion", descripcionTarea);
                             cmd.Parameters.AddWithValue("@estado", estadoTarea);
-                            cmd.Parameters.AddWithValue("@nombreTarea", tareaSeleccionada); // Usamos el nombre original para la actualización
+                            cmd.Parameters.AddWithValue("@nombreTarea", tareaSeleccionada);
 
                             conn.Open();
                             cmd.ExecuteNonQuery();
 
-                            // Actualizar la fila del DataGridView
-                            fila.Cells[0].Value = nombreTarea; // Nombre
-                            fila.Cells[1].Value = descripcionTarea; // Descripción
-                            fila.Cells[2].Value = estadoTarea; // Estado
+                            fila.Cells[0].Value = nombreTarea; 
+                            fila.Cells[1].Value = descripcionTarea; 
+                            fila.Cells[2].Value = estadoTarea; 
 
                             MessageBox.Show("Registro actualizado correctamente");
 
-                            this.Close(); // Cerrar el formulario de edición
+                            this.Close(); 
                         }
                     }
                     catch (Exception ex)
