@@ -11,6 +11,7 @@ namespace InterfacesGraficas
         private String tareaSeleccionada;
         private String descripcionSeleccionada;
         private String estadoSeleccionado;
+        ConexionDB conexiondb = new ConexionDB();
 
         public editarRegistro(DataGridViewRow fila, String tareaSeleccionada, String descripcionSeleccionada, String estadoSeleccionado)
         {
@@ -60,7 +61,7 @@ namespace InterfacesGraficas
                         // Usamos el nombre de la tarea para hacer la actualización
                         string query = "UPDATE Tareas SET Nombre = @nombre, Descripcion = @descripcion, Estado = @estado WHERE Nombre = @nombreTarea";
 
-                        using (SqlConnection conn = new SqlConnection("Data Source=GATOPERCEBE; Initial Catalog=InterfacesGraficas; User ID=Quintero; Password=Quintero; Encrypt=False; TrustServerCertificate=True;"))
+                        using (SqlConnection conn = new SqlConnection(conexiondb.ObtenerCadenaConexion()))
                         {
                             SqlCommand cmd = new SqlCommand(query, conn);
                             cmd.Parameters.AddWithValue("@nombre", nombreTarea);

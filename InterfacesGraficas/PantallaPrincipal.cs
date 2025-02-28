@@ -20,6 +20,8 @@ namespace InterfacesGraficas
             CargarTareas();
         }
 
+        ConexionDB conexiondb = new ConexionDB();
+
         private void btnAgregarTarea_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtNombreTarea.Text) || string.IsNullOrEmpty(txtDescripcionTarea.Text) || string.IsNullOrEmpty(cboxEstadoTarea.Text))
@@ -33,7 +35,7 @@ namespace InterfacesGraficas
                 string estadoTarea = cboxEstadoTarea.SelectedItem.ToString();
 
                 string query = "INSERT INTO Tareas (Nombre, Descripcion, Estado) VALUES (@nombre, @descripcion, @estado)";
-                using (SqlConnection conn = new SqlConnection("Data Source=GATOPERCEBE; Initial Catalog=InterfacesGraficas; User ID=Quintero; Password=Quintero; Encrypt=False; TrustServerCertificate=True;"))
+                using (SqlConnection conn = new SqlConnection(conexiondb.ObtenerCadenaConexion()))
                 {
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@nombre", nombreTarea);
@@ -85,7 +87,7 @@ namespace InterfacesGraficas
 
                         string query = "DELETE FROM Tareas WHERE Nombre = @nombre";
 
-                        using (SqlConnection conn = new SqlConnection("Data Source=GATOPERCEBE; Initial Catalog=InterfacesGraficas; User ID=Quintero; Password=Quintero; Encrypt=False; TrustServerCertificate=True;"))
+                        using (SqlConnection conn = new SqlConnection(conexiondb.ObtenerCadenaConexion()                            ))
                         {
                             SqlCommand cmd = new SqlCommand(query, conn);
                             cmd.Parameters.AddWithValue("@nombre", nombreTarea);
@@ -127,7 +129,7 @@ namespace InterfacesGraficas
         {
             string query = "SELECT Nombre, Descripcion, Estado FROM Tareas";
 
-            using (SqlConnection conn = new SqlConnection("Data Source=GATOPERCEBE; Initial Catalog=InterfacesGraficas; User ID=Quintero; Password=Quintero; Encrypt=False; TrustServerCertificate=True;"))
+            using (SqlConnection conn = new SqlConnection(conexiondb.ObtenerCadenaConexion()))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
