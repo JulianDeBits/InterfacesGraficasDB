@@ -1,5 +1,5 @@
 ﻿1) Crear la base de datos con el query que esta en la raiz de esta carpeta con el nombre de archivo "CrearDataBase.sql";
 
-2) Modificar la cadena de conexion en los formularios al igual que en la clase ConexionBD.cs para que se pueda conectar con las credenciales de su equipo.
+2) Modificar la cadena de conexion que esta en el archivo llamado ConexionDB.cs para poder utilizar el proyecto, no hay ningun usuario, por favor registrarse
 
 3) Ejecutar el proyecto y usar el usuario "admin" y la contraseña "admin" para ingresar al sistema.
