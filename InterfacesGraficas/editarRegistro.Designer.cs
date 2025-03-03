@@ -36,6 +36,8 @@
             this.cbox2EstadoTarea = new System.Windows.Forms.ComboBox();
             this.btnEditarTarea = new System.Windows.Forms.Button();
             this.btnCancelarModificacio = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboxCategoriasTareas2 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // tituloTarea
@@ -57,13 +59,13 @@
             this.txt2NombreTarea.Multiline = true;
             this.txt2NombreTarea.Name = "txt2NombreTarea";
             this.txt2NombreTarea.Size = new System.Drawing.Size(158, 36);
-            this.txt2NombreTarea.TabIndex = 7;
+            this.txt2NombreTarea.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(212, 21);
+            this.label1.Location = new System.Drawing.Point(450, 21);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 24);
@@ -73,18 +75,18 @@
             // txt2DescripcionTarea
             // 
             this.txt2DescripcionTarea.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt2DescripcionTarea.Location = new System.Drawing.Point(216, 47);
+            this.txt2DescripcionTarea.Location = new System.Drawing.Point(454, 47);
             this.txt2DescripcionTarea.Margin = new System.Windows.Forms.Padding(2);
             this.txt2DescripcionTarea.Multiline = true;
             this.txt2DescripcionTarea.Name = "txt2DescripcionTarea";
             this.txt2DescripcionTarea.Size = new System.Drawing.Size(423, 97);
-            this.txt2DescripcionTarea.TabIndex = 9;
+            this.txt2DescripcionTarea.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(669, 20);
+            this.label2.Location = new System.Drawing.Point(907, 20);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 24);
@@ -93,26 +95,27 @@
             // 
             // cbox2EstadoTarea
             // 
+            this.cbox2EstadoTarea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox2EstadoTarea.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbox2EstadoTarea.FormattingEnabled = true;
             this.cbox2EstadoTarea.Items.AddRange(new object[] {
             "Pendiente",
             "Completado"});
-            this.cbox2EstadoTarea.Location = new System.Drawing.Point(673, 47);
+            this.cbox2EstadoTarea.Location = new System.Drawing.Point(911, 47);
             this.cbox2EstadoTarea.Margin = new System.Windows.Forms.Padding(2);
             this.cbox2EstadoTarea.Name = "cbox2EstadoTarea";
             this.cbox2EstadoTarea.Size = new System.Drawing.Size(158, 36);
-            this.cbox2EstadoTarea.TabIndex = 11;
+            this.cbox2EstadoTarea.TabIndex = 4;
             // 
             // btnEditarTarea
             // 
             this.btnEditarTarea.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnEditarTarea.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarTarea.Location = new System.Drawing.Point(748, 160);
+            this.btnEditarTarea.Location = new System.Drawing.Point(974, 160);
             this.btnEditarTarea.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditarTarea.Name = "btnEditarTarea";
             this.btnEditarTarea.Size = new System.Drawing.Size(95, 40);
-            this.btnEditarTarea.TabIndex = 14;
+            this.btnEditarTarea.TabIndex = 0;
             this.btnEditarTarea.Text = "Guardar";
             this.btnEditarTarea.UseVisualStyleBackColor = false;
             this.btnEditarTarea.Click += new System.EventHandler(this.btnEditarTarea_Click);
@@ -121,19 +124,46 @@
             // 
             this.btnCancelarModificacio.BackColor = System.Drawing.Color.Salmon;
             this.btnCancelarModificacio.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarModificacio.Location = new System.Drawing.Point(640, 160);
+            this.btnCancelarModificacio.Location = new System.Drawing.Point(870, 160);
             this.btnCancelarModificacio.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelarModificacio.Name = "btnCancelarModificacio";
             this.btnCancelarModificacio.Size = new System.Drawing.Size(95, 40);
-            this.btnCancelarModificacio.TabIndex = 13;
+            this.btnCancelarModificacio.TabIndex = 5;
             this.btnCancelarModificacio.Text = "Cancelar";
             this.btnCancelarModificacio.UseVisualStyleBackColor = false;
             this.btnCancelarModificacio.Click += new System.EventHandler(this.btnCancelarModificacio_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(242, 21);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 24);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Categoria";
+            // 
+            // cboxCategoriasTareas2
+            // 
+            this.cboxCategoriasTareas2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxCategoriasTareas2.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboxCategoriasTareas2.FormattingEnabled = true;
+            this.cboxCategoriasTareas2.Items.AddRange(new object[] {
+            "Pendiente",
+            "Completado"});
+            this.cboxCategoriasTareas2.Location = new System.Drawing.Point(246, 48);
+            this.cboxCategoriasTareas2.Margin = new System.Windows.Forms.Padding(2);
+            this.cboxCategoriasTareas2.Name = "cboxCategoriasTareas2";
+            this.cboxCategoriasTareas2.Size = new System.Drawing.Size(158, 36);
+            this.cboxCategoriasTareas2.TabIndex = 2;
+            // 
             // editarRegistro
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(884, 211);
+            this.ClientSize = new System.Drawing.Size(1084, 211);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cboxCategoriasTareas2);
             this.Controls.Add(this.btnCancelarModificacio);
             this.Controls.Add(this.btnEditarTarea);
             this.Controls.Add(this.label2);
@@ -161,5 +191,7 @@
         private System.Windows.Forms.ComboBox cbox2EstadoTarea;
         private System.Windows.Forms.Button btnEditarTarea;
         private System.Windows.Forms.Button btnCancelarModificacio;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboxCategoriasTareas2;
     }
 }

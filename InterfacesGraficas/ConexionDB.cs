@@ -11,7 +11,7 @@ namespace InterfacesGraficas
 {
     class ConexionDB
     {
-        private static String cadenaConexion = "Data Source=GATOPERCEBE; Initial Catalog=InterfacesGraficas; User ID=Quintero; Password=Quintero; Encrypt=False; TrustServerCertificate=True;";
+        private static readonly string cadenaConexion = "Data Source=GATOPERCEBE; Initial Catalog=TareasDB; User ID=Quintero; Password=Quintero; Encrypt=False; TrustServerCertificate=True;";
 
         public string ObtenerCadenaConexion()
         {

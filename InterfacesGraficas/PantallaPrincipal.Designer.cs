@@ -37,7 +37,10 @@
             this.tituloTarea = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboxCategoriaTarea = new System.Windows.Forms.ComboBox();
             this.dgvTareas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCategorias = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvEditar = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -54,30 +57,31 @@
             this.txtNombreTarea.Multiline = true;
             this.txtNombreTarea.Name = "txtNombreTarea";
             this.txtNombreTarea.Size = new System.Drawing.Size(158, 36);
-            this.txtNombreTarea.TabIndex = 0;
+            this.txtNombreTarea.TabIndex = 2;
             // 
             // cboxEstadoTarea
             // 
+            this.cboxEstadoTarea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxEstadoTarea.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxEstadoTarea.FormattingEnabled = true;
             this.cboxEstadoTarea.Items.AddRange(new object[] {
             "Pendiente",
             "Completado"});
-            this.cboxEstadoTarea.Location = new System.Drawing.Point(44, 437);
+            this.cboxEstadoTarea.Location = new System.Drawing.Point(44, 523);
             this.cboxEstadoTarea.Margin = new System.Windows.Forms.Padding(2);
             this.cboxEstadoTarea.Name = "cboxEstadoTarea";
             this.cboxEstadoTarea.Size = new System.Drawing.Size(158, 36);
-            this.cboxEstadoTarea.TabIndex = 2;
+            this.cboxEstadoTarea.TabIndex = 5;
             // 
             // txtDescripcionTarea
             // 
             this.txtDescripcionTarea.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcionTarea.Location = new System.Drawing.Point(44, 265);
+            this.txtDescripcionTarea.Location = new System.Drawing.Point(44, 351);
             this.txtDescripcionTarea.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescripcionTarea.Multiline = true;
             this.txtDescripcionTarea.Name = "txtDescripcionTarea";
             this.txtDescripcionTarea.Size = new System.Drawing.Size(158, 134);
-            this.txtDescripcionTarea.TabIndex = 1;
+            this.txtDescripcionTarea.TabIndex = 4;
             // 
             // iconoApp
             // 
@@ -93,11 +97,11 @@
             // 
             this.btnAgregarTarea.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnAgregarTarea.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarTarea.Location = new System.Drawing.Point(76, 485);
+            this.btnAgregarTarea.Location = new System.Drawing.Point(77, 574);
             this.btnAgregarTarea.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarTarea.Name = "btnAgregarTarea";
             this.btnAgregarTarea.Size = new System.Drawing.Size(83, 40);
-            this.btnAgregarTarea.TabIndex = 4;
+            this.btnAgregarTarea.TabIndex = 1;
             this.btnAgregarTarea.Text = "Agregar";
             this.btnAgregarTarea.UseVisualStyleBackColor = false;
             this.btnAgregarTarea.Click += new System.EventHandler(this.btnAgregarTarea_Click);
@@ -107,6 +111,7 @@
             this.dgvTablaTareas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTablaTareas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgvTareas,
+            this.dgvCategorias,
             this.dgvDescripcion,
             this.dgvEstado,
             this.dgvEditar,
@@ -116,7 +121,7 @@
             this.dgvTablaTareas.Name = "dgvTablaTareas";
             this.dgvTablaTareas.RowHeadersWidth = 51;
             this.dgvTablaTareas.RowTemplate.Height = 24;
-            this.dgvTablaTareas.Size = new System.Drawing.Size(615, 508);
+            this.dgvTablaTareas.Size = new System.Drawing.Size(818, 597);
             this.dgvTablaTareas.TabIndex = 5;
             this.dgvTablaTareas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTablaTareas_CellClick);
             // 
@@ -135,7 +140,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(40, 238);
+            this.label1.Location = new System.Drawing.Point(40, 324);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 24);
@@ -146,12 +151,37 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(40, 410);
+            this.label2.Location = new System.Drawing.Point(40, 496);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 24);
             this.label2.TabIndex = 8;
             this.label2.Text = "Estado";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(40, 242);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 24);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Categoria";
+            // 
+            // cboxCategoriaTarea
+            // 
+            this.cboxCategoriaTarea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxCategoriaTarea.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboxCategoriaTarea.FormattingEnabled = true;
+            this.cboxCategoriaTarea.Items.AddRange(new object[] {
+            "Pendiente",
+            "Completado"});
+            this.cboxCategoriaTarea.Location = new System.Drawing.Point(44, 269);
+            this.cboxCategoriaTarea.Margin = new System.Windows.Forms.Padding(2);
+            this.cboxCategoriaTarea.Name = "cboxCategoriaTarea";
+            this.cboxCategoriaTarea.Size = new System.Drawing.Size(158, 36);
+            this.cboxCategoriaTarea.TabIndex = 3;
             // 
             // dgvTareas
             // 
@@ -162,14 +192,20 @@
             this.dgvTareas.ReadOnly = true;
             this.dgvTareas.Width = 125;
             // 
+            // dgvCategorias
+            // 
+            this.dgvCategorias.HeaderText = "Categoria";
+            this.dgvCategorias.Name = "dgvCategorias";
+            this.dgvCategorias.ReadOnly = true;
+            // 
             // dgvDescripcion
             // 
             this.dgvDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dgvDescripcion.HeaderText = "Descripción";
-            this.dgvDescripcion.MinimumWidth = 6;
+            this.dgvDescripcion.MinimumWidth = 10;
             this.dgvDescripcion.Name = "dgvDescripcion";
             this.dgvDescripcion.ReadOnly = true;
-            this.dgvDescripcion.Width = 125;
+            this.dgvDescripcion.Width = 225;
             // 
             // dgvEstado
             // 
@@ -202,7 +238,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(1084, 661);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cboxCategoriaTarea);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tituloTarea);
@@ -235,7 +273,10 @@
         private System.Windows.Forms.Label tituloTarea;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboxCategoriaTarea;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvTareas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvCategorias;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvDescripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvEstado;
         private System.Windows.Forms.DataGridViewButtonColumn dgvEditar;

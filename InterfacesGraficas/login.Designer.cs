@@ -33,6 +33,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnEntrar = new System.Windows.Forms.Button();
+            this.linkRegistrarse = new System.Windows.Forms.LinkLabel();
+            this.stringIniciarSesion = new System.Windows.Forms.Label();
             this.iconoPrincipal = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.iconoPrincipal)).BeginInit();
             this.SuspendLayout();
@@ -40,29 +42,29 @@
             // txtUsuario
             // 
             this.txtUsuario.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(60, 247);
+            this.txtUsuario.Location = new System.Drawing.Point(32, 251);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsuario.Multiline = true;
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(162, 28);
+            this.txtUsuario.Size = new System.Drawing.Size(224, 28);
             this.txtUsuario.TabIndex = 0;
             // 
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(60, 314);
+            this.txtPassword.Location = new System.Drawing.Point(32, 318);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(162, 28);
+            this.txtPassword.Size = new System.Drawing.Size(224, 28);
             this.txtPassword.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(56, 216);
+            this.label1.Location = new System.Drawing.Point(28, 220);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 28);
@@ -73,7 +75,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(56, 283);
+            this.label2.Location = new System.Drawing.Point(28, 287);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 28);
@@ -84,7 +86,7 @@
             // 
             this.btnEntrar.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnEntrar.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEntrar.Location = new System.Drawing.Point(109, 373);
+            this.btnEntrar.Location = new System.Drawing.Point(107, 379);
             this.btnEntrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(80, 46);
@@ -93,13 +95,34 @@
             this.btnEntrar.UseVisualStyleBackColor = false;
             this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
             // 
+            // linkRegistrarse
+            // 
+            this.linkRegistrarse.AutoSize = true;
+            this.linkRegistrarse.LinkColor = System.Drawing.Color.Black;
+            this.linkRegistrarse.Location = new System.Drawing.Point(152, 444);
+            this.linkRegistrarse.Name = "linkRegistrarse";
+            this.linkRegistrarse.Size = new System.Drawing.Size(58, 13);
+            this.linkRegistrarse.TabIndex = 7;
+            this.linkRegistrarse.TabStop = true;
+            this.linkRegistrarse.Text = "Registrate ";
+            this.linkRegistrarse.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // stringIniciarSesion
+            // 
+            this.stringIniciarSesion.AutoSize = true;
+            this.stringIniciarSesion.Location = new System.Drawing.Point(75, 444);
+            this.stringIniciarSesion.Name = "stringIniciarSesion";
+            this.stringIniciarSesion.Size = new System.Drawing.Size(77, 13);
+            this.stringIniciarSesion.TabIndex = 8;
+            this.stringIniciarSesion.Text = "Inicia sesion  ó";
+            // 
             // iconoPrincipal
             // 
             this.iconoPrincipal.Image = global::InterfacesGraficas.Properties.Resources.inicio;
-            this.iconoPrincipal.Location = new System.Drawing.Point(80, 39);
+            this.iconoPrincipal.Location = new System.Drawing.Point(78, 48);
             this.iconoPrincipal.Margin = new System.Windows.Forms.Padding(2);
             this.iconoPrincipal.Name = "iconoPrincipal";
-            this.iconoPrincipal.Size = new System.Drawing.Size(141, 126);
+            this.iconoPrincipal.Size = new System.Drawing.Size(132, 136);
             this.iconoPrincipal.TabIndex = 6;
             this.iconoPrincipal.TabStop = false;
             // 
@@ -107,7 +130,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 449);
+            this.ClientSize = new System.Drawing.Size(286, 511);
+            this.Controls.Add(this.stringIniciarSesion);
+            this.Controls.Add(this.linkRegistrarse);
             this.Controls.Add(this.iconoPrincipal);
             this.Controls.Add(this.btnEntrar);
             this.Controls.Add(this.label2);
@@ -132,6 +157,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnEntrar;
         private System.Windows.Forms.PictureBox iconoPrincipal;
+        private System.Windows.Forms.LinkLabel linkRegistrarse;
+        private System.Windows.Forms.Label stringIniciarSesion;
     }
 }
 
