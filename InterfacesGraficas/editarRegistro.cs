@@ -214,7 +214,6 @@ namespace InterfacesGraficas
                 }
             }
         }
-a
         private int ObtenerCategoriaId(string categoria)
         {
             string query = "SELECT id FROM Categorias WHERE nombre = @categoria";

@@ -14,6 +14,7 @@ namespace InterfacesGraficas
             CargarEstados();
             CargarCategorias();
             dgvTablaTareas.TabStop = false;
+            btnNuevaCategoria.TabStop = false;
         }
 
         ConexionDB conexiondb = new ConexionDB();
@@ -99,7 +100,7 @@ namespace InterfacesGraficas
             }
         }
 
-        private void CargarCategorias()
+        public void CargarCategorias()
         {
             string query = "SELECT id, nombre FROM Categorias";  
 
@@ -298,5 +299,11 @@ namespace InterfacesGraficas
             }
         }
 
+        private void btnNuevaCategoria_Click(object sender, EventArgs e)
+        {
+            agregarCategoria categoria = new agregarCategoria();
+            categoria.Show();
+            this.Close();
+        }
     }
 }

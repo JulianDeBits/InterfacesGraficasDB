@@ -160,6 +160,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="agregarCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="agregarCategoria.Designer.cs">
+      <DependentUpon>agregarCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConexionDB.cs" />
     <Compile Include="editarRegistro.cs">
       <SubType>Form</SubType>
@@ -187,6 +193,9 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="agregarCategoria.resx">
+      <DependentUpon>agregarCategoria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="editarRegistro.resx">
       <DependentUpon>editarRegistro.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,6 +246,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\register.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\categoria.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

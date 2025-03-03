@@ -31,7 +31,6 @@
             this.txtNombreTarea = new System.Windows.Forms.TextBox();
             this.cboxEstadoTarea = new System.Windows.Forms.ComboBox();
             this.txtDescripcionTarea = new System.Windows.Forms.TextBox();
-            this.iconoApp = new System.Windows.Forms.PictureBox();
             this.btnAgregarTarea = new System.Windows.Forms.Button();
             this.dgvTablaTareas = new System.Windows.Forms.DataGridView();
             this.tituloTarea = new System.Windows.Forms.Label();
@@ -45,8 +44,10 @@
             this.dgvEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvEditar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dgvBorrar = new System.Windows.Forms.DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.iconoApp)).BeginInit();
+            this.iconoApp = new System.Windows.Forms.PictureBox();
+            this.btnNuevaCategoria = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablaTareas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconoApp)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNombreTarea
@@ -67,7 +68,7 @@
             this.cboxEstadoTarea.Items.AddRange(new object[] {
             "Pendiente",
             "Completado"});
-            this.cboxEstadoTarea.Location = new System.Drawing.Point(44, 523);
+            this.cboxEstadoTarea.Location = new System.Drawing.Point(44, 562);
             this.cboxEstadoTarea.Margin = new System.Windows.Forms.Padding(2);
             this.cboxEstadoTarea.Name = "cboxEstadoTarea";
             this.cboxEstadoTarea.Size = new System.Drawing.Size(158, 36);
@@ -76,28 +77,18 @@
             // txtDescripcionTarea
             // 
             this.txtDescripcionTarea.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcionTarea.Location = new System.Drawing.Point(44, 351);
+            this.txtDescripcionTarea.Location = new System.Drawing.Point(44, 417);
             this.txtDescripcionTarea.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescripcionTarea.Multiline = true;
             this.txtDescripcionTarea.Name = "txtDescripcionTarea";
-            this.txtDescripcionTarea.Size = new System.Drawing.Size(158, 134);
+            this.txtDescripcionTarea.Size = new System.Drawing.Size(158, 112);
             this.txtDescripcionTarea.TabIndex = 4;
-            // 
-            // iconoApp
-            // 
-            this.iconoApp.Image = global::InterfacesGraficas.Properties.Resources.IconoTareas;
-            this.iconoApp.Location = new System.Drawing.Point(44, 17);
-            this.iconoApp.Margin = new System.Windows.Forms.Padding(2);
-            this.iconoApp.Name = "iconoApp";
-            this.iconoApp.Size = new System.Drawing.Size(142, 137);
-            this.iconoApp.TabIndex = 3;
-            this.iconoApp.TabStop = false;
             // 
             // btnAgregarTarea
             // 
             this.btnAgregarTarea.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnAgregarTarea.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarTarea.Location = new System.Drawing.Point(77, 574);
+            this.btnAgregarTarea.Location = new System.Drawing.Point(77, 610);
             this.btnAgregarTarea.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarTarea.Name = "btnAgregarTarea";
             this.btnAgregarTarea.Size = new System.Drawing.Size(83, 40);
@@ -121,7 +112,7 @@
             this.dgvTablaTareas.Name = "dgvTablaTareas";
             this.dgvTablaTareas.RowHeadersWidth = 51;
             this.dgvTablaTareas.RowTemplate.Height = 24;
-            this.dgvTablaTareas.Size = new System.Drawing.Size(818, 597);
+            this.dgvTablaTareas.Size = new System.Drawing.Size(818, 633);
             this.dgvTablaTareas.TabIndex = 5;
             this.dgvTablaTareas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTablaTareas_CellClick);
             // 
@@ -140,7 +131,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(40, 324);
+            this.label1.Location = new System.Drawing.Point(40, 390);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 24);
@@ -151,7 +142,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(40, 496);
+            this.label2.Location = new System.Drawing.Point(40, 535);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 24);
@@ -162,7 +153,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(40, 242);
+            this.label3.Location = new System.Drawing.Point(40, 235);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 24);
@@ -177,7 +168,7 @@
             this.cboxCategoriaTarea.Items.AddRange(new object[] {
             "Pendiente",
             "Completado"});
-            this.cboxCategoriaTarea.Location = new System.Drawing.Point(44, 269);
+            this.cboxCategoriaTarea.Location = new System.Drawing.Point(44, 262);
             this.cboxCategoriaTarea.Margin = new System.Windows.Forms.Padding(2);
             this.cboxCategoriaTarea.Name = "cboxCategoriaTarea";
             this.cboxCategoriaTarea.Size = new System.Drawing.Size(158, 36);
@@ -234,11 +225,35 @@
             this.dgvBorrar.MinimumWidth = 6;
             this.dgvBorrar.Name = "dgvBorrar";
             // 
+            // iconoApp
+            // 
+            this.iconoApp.Image = global::InterfacesGraficas.Properties.Resources.IconoTareas;
+            this.iconoApp.Location = new System.Drawing.Point(44, 17);
+            this.iconoApp.Margin = new System.Windows.Forms.Padding(2);
+            this.iconoApp.Name = "iconoApp";
+            this.iconoApp.Size = new System.Drawing.Size(142, 137);
+            this.iconoApp.TabIndex = 3;
+            this.iconoApp.TabStop = false;
+            // 
+            // btnNuevaCategoria
+            // 
+            this.btnNuevaCategoria.BackColor = System.Drawing.Color.PowderBlue;
+            this.btnNuevaCategoria.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevaCategoria.Location = new System.Drawing.Point(46, 323);
+            this.btnNuevaCategoria.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNuevaCategoria.Name = "btnNuevaCategoria";
+            this.btnNuevaCategoria.Size = new System.Drawing.Size(156, 40);
+            this.btnNuevaCategoria.TabIndex = 11;
+            this.btnNuevaCategoria.Text = "Nueva Categoria";
+            this.btnNuevaCategoria.UseVisualStyleBackColor = false;
+            this.btnNuevaCategoria.Click += new System.EventHandler(this.btnNuevaCategoria_Click);
+            // 
             // PantallaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 661);
+            this.Controls.Add(this.btnNuevaCategoria);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cboxCategoriaTarea);
             this.Controls.Add(this.label2);
@@ -255,8 +270,8 @@
             this.Opacity = 0.96D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pantalla Principal";
-            ((System.ComponentModel.ISupportInitialize)(this.iconoApp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablaTareas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconoApp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,5 +296,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvEstado;
         private System.Windows.Forms.DataGridViewButtonColumn dgvEditar;
         private System.Windows.Forms.DataGridViewButtonColumn dgvBorrar;
+        private System.Windows.Forms.Button btnNuevaCategoria;
     }
 }
