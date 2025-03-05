@@ -12,12 +12,10 @@ namespace InterfacesGraficas
             linkRegistrarse.TabStop = false;
         }
 
-        private string nombreUsuario;
-        private string contrasena;
+        private static string nombreUsuario;
+        private static string contrasena;
         ConexionDB conexiondb = new ConexionDB();
         private string query = "SELECT COUNT(*) FROM Usuarios WHERE nombreUsuario = @nombreUsuario AND contrasena = @contrasena";
-
-        PantallaPrincipal pantallaIngreso = new PantallaPrincipal();
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
@@ -25,6 +23,8 @@ namespace InterfacesGraficas
             contrasena = txtPassword.Text;
             Comparar();
         }
+
+        PantallaPrincipal pantallaIngreso = new PantallaPrincipal(nombreUsuario);
 
         private void Comparar()
         {
@@ -61,6 +61,14 @@ namespace InterfacesGraficas
             Register registro = new Register();
             this.Hide();
             registro.Show();
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnEntrar.PerformClick();
+            }
         }
     }
 }

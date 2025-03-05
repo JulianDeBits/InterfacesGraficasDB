@@ -7,14 +7,18 @@ namespace InterfacesGraficas
 {
     public partial class PantallaPrincipal : Form
     {
-        public PantallaPrincipal()
+
+        private string usuarioActual;
+        public PantallaPrincipal(string usuarioActual)
         {
             InitializeComponent();
+            this.usuarioActual = usuarioActual;
             CargarTareas();
             CargarEstados();
             CargarCategorias();
             dgvTablaTareas.TabStop = false;
             btnNuevaCategoria.TabStop = false;
+            this.usuarioActual = usuarioActual;
         }
 
         ConexionDB conexiondb = new ConexionDB();
@@ -303,7 +307,6 @@ namespace InterfacesGraficas
         {
             agregarCategoria categoria = new agregarCategoria();
             categoria.Show();
-            this.Close();
         }
     }
 }

@@ -60,9 +60,16 @@ namespace InterfacesGraficas
             }
         }
 
+        private void txtConfirmarPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnRegistrarse.PerformClick();
+            }
+        }
     }
 
-public class UsuarioRepository
+    public class UsuarioRepository
     {
         private ConexionDB conexionDb;
 

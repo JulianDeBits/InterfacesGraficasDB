@@ -173,6 +173,7 @@
             this.txtConfirmarPassword.PasswordChar = '*';
             this.txtConfirmarPassword.Size = new System.Drawing.Size(215, 28);
             this.txtConfirmarPassword.TabIndex = 5;
+            this.txtConfirmarPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConfirmarPassword_KeyDown);
             // 
             // Register
             // 

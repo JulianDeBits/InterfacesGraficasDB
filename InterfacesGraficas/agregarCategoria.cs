@@ -83,8 +83,6 @@ namespace InterfacesGraficas
                     MessageBox.Show("Categoría creada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtNombreCategoria.Clear();
                     txtDescripcionCategoria.Clear();
-                    PantallaPrincipal pantalla = new PantallaPrincipal();
-                    pantalla.Show();
                     this.Close();
                 }
                 catch (Exception ex)
