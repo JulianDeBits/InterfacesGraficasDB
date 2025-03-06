@@ -55,7 +55,6 @@
             this.txtNombreCategoria.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombreCategoria.Location = new System.Drawing.Point(380, 74);
             this.txtNombreCategoria.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNombreCategoria.Multiline = true;
             this.txtNombreCategoria.Name = "txtNombreCategoria";
             this.txtNombreCategoria.Size = new System.Drawing.Size(218, 36);
             this.txtNombreCategoria.TabIndex = 2;

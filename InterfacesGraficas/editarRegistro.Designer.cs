@@ -56,7 +56,6 @@
             this.txt2NombreTarea.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt2NombreTarea.Location = new System.Drawing.Point(25, 47);
             this.txt2NombreTarea.Margin = new System.Windows.Forms.Padding(2);
-            this.txt2NombreTarea.Multiline = true;
             this.txt2NombreTarea.Name = "txt2NombreTarea";
             this.txt2NombreTarea.Size = new System.Drawing.Size(158, 36);
             this.txt2NombreTarea.TabIndex = 1;

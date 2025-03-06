@@ -59,9 +59,8 @@
             this.txtCorreo.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCorreo.Location = new System.Drawing.Point(30, 180);
             this.txtCorreo.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCorreo.Multiline = true;
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(215, 28);
+            this.txtCorreo.Size = new System.Drawing.Size(215, 30);
             this.txtCorreo.TabIndex = 2;
             // 
             // nombreUsuarioTitulo
@@ -81,9 +80,8 @@
             this.txtNombreUsuario.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombreUsuario.Location = new System.Drawing.Point(31, 251);
             this.txtNombreUsuario.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNombreUsuario.Multiline = true;
             this.txtNombreUsuario.Name = "txtNombreUsuario";
-            this.txtNombreUsuario.Size = new System.Drawing.Size(215, 28);
+            this.txtNombreUsuario.Size = new System.Drawing.Size(215, 30);
             this.txtNombreUsuario.TabIndex = 3;
             this.txtNombreUsuario.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -103,10 +101,9 @@
             this.txtPassword.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(31, 314);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(215, 28);
+            this.txtPassword.Size = new System.Drawing.Size(215, 30);
             this.txtPassword.TabIndex = 4;
             // 
             // btnRegistrarse
@@ -168,10 +165,9 @@
             this.txtConfirmarPassword.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfirmarPassword.Location = new System.Drawing.Point(31, 384);
             this.txtConfirmarPassword.Margin = new System.Windows.Forms.Padding(2);
-            this.txtConfirmarPassword.Multiline = true;
             this.txtConfirmarPassword.Name = "txtConfirmarPassword";
             this.txtConfirmarPassword.PasswordChar = '*';
-            this.txtConfirmarPassword.Size = new System.Drawing.Size(215, 28);
+            this.txtConfirmarPassword.Size = new System.Drawing.Size(215, 30);
             this.txtConfirmarPassword.TabIndex = 5;
             this.txtConfirmarPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConfirmarPassword_KeyDown);
             // 

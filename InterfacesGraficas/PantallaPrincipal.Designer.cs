@@ -49,6 +49,7 @@
             this.txtUsuarioActual = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.iconoApp = new System.Windows.Forms.PictureBox();
+            this.txtTitulo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablaTareas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconoApp)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +59,6 @@
             this.txtNombreTarea.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombreTarea.Location = new System.Drawing.Point(44, 188);
             this.txtNombreTarea.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNombreTarea.Multiline = true;
             this.txtNombreTarea.Name = "txtNombreTarea";
             this.txtNombreTarea.Size = new System.Drawing.Size(158, 36);
             this.txtNombreTarea.TabIndex = 2;
@@ -84,7 +84,7 @@
             this.txtDescripcionTarea.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescripcionTarea.Multiline = true;
             this.txtDescripcionTarea.Name = "txtDescripcionTarea";
-            this.txtDescripcionTarea.Size = new System.Drawing.Size(158, 112);
+            this.txtDescripcionTarea.Size = new System.Drawing.Size(158, 100);
             this.txtDescripcionTarea.TabIndex = 4;
             // 
             // btnAgregarTarea
@@ -177,9 +177,9 @@
             this.tituloTarea.Location = new System.Drawing.Point(40, 162);
             this.tituloTarea.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.tituloTarea.Name = "tituloTarea";
-            this.tituloTarea.Size = new System.Drawing.Size(49, 24);
+            this.tituloTarea.Size = new System.Drawing.Size(110, 24);
             this.tituloTarea.TabIndex = 6;
-            this.tituloTarea.Text = "Tarea";
+            this.tituloTarea.Text = "Nombre Tarea";
             // 
             // label1
             // 
@@ -285,11 +285,23 @@
             this.iconoApp.TabIndex = 3;
             this.iconoApp.TabStop = false;
             // 
+            // txtTitulo
+            // 
+            this.txtTitulo.AutoSize = true;
+            this.txtTitulo.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.txtTitulo.Font = new System.Drawing.Font("Segoe Print", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitulo.Location = new System.Drawing.Point(519, 17);
+            this.txtTitulo.Name = "txtTitulo";
+            this.txtTitulo.Size = new System.Drawing.Size(243, 47);
+            this.txtTitulo.TabIndex = 15;
+            this.txtTitulo.Text = "PANEL TAREAS";
+            // 
             // PantallaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 661);
+            this.Controls.Add(this.txtTitulo);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.txtUsuarioActual);
             this.Controls.Add(this.usuarioTitulo);
@@ -343,5 +355,6 @@
         private System.Windows.Forms.Label usuarioTitulo;
         private System.Windows.Forms.Label txtUsuarioActual;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Label txtTitulo;
     }
 }
