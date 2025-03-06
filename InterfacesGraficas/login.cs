@@ -12,36 +12,36 @@ namespace InterfacesGraficas
             linkRegistrarse.TabStop = false;
         }
 
-        private static string nombreUsuario;
-        private static string contrasena;
+        private string nombreUsuario;
+        private string contrasena;
         ConexionDB conexiondb = new ConexionDB();
-        private string query = "SELECT COUNT(*) FROM Usuarios WHERE nombreUsuario = @nombreUsuario AND contrasena = @contrasena";
+        private string query = "SELECT id FROM Usuarios WHERE nombreUsuario = @nombreUsuario AND contrasena = @contrasena"; 
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            nombreUsuario = txtUsuario.Text;  
+            nombreUsuario = txtUsuario.Text;
             contrasena = txtPassword.Text;
             Comparar();
         }
-
-        PantallaPrincipal pantallaIngreso = new PantallaPrincipal(nombreUsuario);
 
         private void Comparar()
         {
             using (SqlConnection conn = new SqlConnection(conexiondb.ObtenerCadenaConexion()))
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@nombreUsuario", nombreUsuario); 
-                cmd.Parameters.AddWithValue("@contrasena", contrasena); 
+                cmd.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                cmd.Parameters.AddWithValue("@contrasena", contrasena);
 
                 try
                 {
                     conn.Open();
-                    int count = (int)cmd.ExecuteScalar();
+                    object result = cmd.ExecuteScalar(); 
 
-                    if (count > 0)
+                    if (result != null)
                     {
-                        pantallaIngreso.Show();
+                        int usuarioId = Convert.ToInt32(result);
+                        PantallaPrincipal inicio = new PantallaPrincipal(usuarioId); 
+                        inicio.Show();
                         this.Hide();
                     }
                     else
@@ -63,11 +63,21 @@ namespace InterfacesGraficas
             registro.Show();
         }
 
+        private void txtUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnEntrar.PerformClick();
+                e.Handled = true;
+            }
+        }
+
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 btnEntrar.PerformClick();
+                e.Handled = true;
             }
         }
     }

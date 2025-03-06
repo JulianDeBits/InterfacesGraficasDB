@@ -44,10 +44,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cboxCategoriaTarea = new System.Windows.Forms.ComboBox();
-            this.iconoApp = new System.Windows.Forms.PictureBox();
             this.btnNuevaCategoria = new System.Windows.Forms.Button();
             this.usuarioTitulo = new System.Windows.Forms.Label();
             this.txtUsuarioActual = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.iconoApp = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablaTareas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconoApp)).BeginInit();
             this.SuspendLayout();
@@ -227,16 +228,6 @@
             this.cboxCategoriaTarea.Size = new System.Drawing.Size(158, 36);
             this.cboxCategoriaTarea.TabIndex = 3;
             // 
-            // iconoApp
-            // 
-            this.iconoApp.Image = global::InterfacesGraficas.Properties.Resources.IconoTareas;
-            this.iconoApp.Location = new System.Drawing.Point(44, 17);
-            this.iconoApp.Margin = new System.Windows.Forms.Padding(2);
-            this.iconoApp.Name = "iconoApp";
-            this.iconoApp.Size = new System.Drawing.Size(142, 137);
-            this.iconoApp.TabIndex = 3;
-            this.iconoApp.TabStop = false;
-            // 
             // btnNuevaCategoria
             // 
             this.btnNuevaCategoria.BackColor = System.Drawing.Color.PowderBlue;
@@ -257,26 +248,49 @@
             this.usuarioTitulo.Location = new System.Drawing.Point(246, 29);
             this.usuarioTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.usuarioTitulo.Name = "usuarioTitulo";
-            this.usuarioTitulo.Size = new System.Drawing.Size(73, 24);
+            this.usuarioTitulo.Size = new System.Drawing.Size(125, 24);
             this.usuarioTitulo.TabIndex = 12;
-            this.usuarioTitulo.Text = "Usuario: ";
+            this.usuarioTitulo.Text = "Usuario Actual: ";
             // 
             // txtUsuarioActual
             // 
             this.txtUsuarioActual.AutoSize = true;
             this.txtUsuarioActual.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuarioActual.Location = new System.Drawing.Point(323, 29);
+            this.txtUsuarioActual.Location = new System.Drawing.Point(365, 29);
             this.txtUsuarioActual.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtUsuarioActual.Name = "txtUsuarioActual";
             this.txtUsuarioActual.Size = new System.Drawing.Size(59, 24);
             this.txtUsuarioActual.TabIndex = 13;
             this.txtUsuarioActual.Text = "default";
             // 
+            // btnLogout
+            // 
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Image = global::InterfacesGraficas.Properties.Resources.Logout_Redimensionado;
+            this.btnLogout.Location = new System.Drawing.Point(995, 12);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(54, 52);
+            this.btnLogout.TabIndex = 14;
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // iconoApp
+            // 
+            this.iconoApp.Image = global::InterfacesGraficas.Properties.Resources.IconoTareas;
+            this.iconoApp.Location = new System.Drawing.Point(44, 17);
+            this.iconoApp.Margin = new System.Windows.Forms.Padding(2);
+            this.iconoApp.Name = "iconoApp";
+            this.iconoApp.Size = new System.Drawing.Size(142, 137);
+            this.iconoApp.TabIndex = 3;
+            this.iconoApp.TabStop = false;
+            // 
             // PantallaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 661);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.txtUsuarioActual);
             this.Controls.Add(this.usuarioTitulo);
             this.Controls.Add(this.btnNuevaCategoria);
@@ -291,11 +305,14 @@
             this.Controls.Add(this.txtDescripcionTarea);
             this.Controls.Add(this.cboxEstadoTarea);
             this.Controls.Add(this.txtNombreTarea);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PantallaPrincipal";
             this.Opacity = 0.96D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pantalla Principal";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PantallaPrincipal_FormClosing);
+            this.Load += new System.EventHandler(this.PantallaPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablaTareas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconoApp)).EndInit();
             this.ResumeLayout(false);
@@ -325,5 +342,6 @@
         private System.Windows.Forms.Button btnNuevaCategoria;
         private System.Windows.Forms.Label usuarioTitulo;
         private System.Windows.Forms.Label txtUsuarioActual;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

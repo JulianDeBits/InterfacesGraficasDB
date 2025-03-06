@@ -53,6 +53,9 @@ namespace InterfacesGraficas
             if (registrado)
             {
                 MessageBox.Show("Usuario registrado exitosamente");
+                Login login = new Login();
+                login.Show();
+                this.Close();
             }
             else
             {

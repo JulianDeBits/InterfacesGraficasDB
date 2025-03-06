@@ -7,18 +7,23 @@ namespace InterfacesGraficas
 {
     public partial class PantallaPrincipal : Form
     {
+        private int usuarioActual; 
 
-        private string usuarioActual;
-        public PantallaPrincipal(string usuarioActual)
+        public PantallaPrincipal(int usuarioId)
         {
             InitializeComponent();
-            this.usuarioActual = usuarioActual;
+            usuarioActual = usuarioId; 
             CargarTareas();
             CargarEstados();
             CargarCategorias();
             dgvTablaTareas.TabStop = false;
             btnNuevaCategoria.TabStop = false;
-            this.usuarioActual = usuarioActual;
+            btnLogout.TabStop = false;
+        }
+
+        private void PantallaPrincipal_Load(object sender, EventArgs e)
+        {
+            txtUsuarioActual.Text = ObtenerNombreUsuario(usuarioActual); 
         }
 
         ConexionDB conexiondb = new ConexionDB();
@@ -36,16 +41,15 @@ namespace InterfacesGraficas
                 {
                     conn.Open();
                     object result = cmd.ExecuteScalar();
-                    return result != null ? Convert.ToInt32(result) : -1; 
+                    return result != null ? Convert.ToInt32(result) : -1;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error al obtener la categoría: " + ex.Message);
-                    return -1; 
+                    return -1;
                 }
             }
         }
-
 
         private void btnAgregarTarea_Click(object sender, EventArgs e)
         {
@@ -58,19 +62,19 @@ namespace InterfacesGraficas
                 string nombreTarea = txtNombreTarea.Text;
                 string descripcionTarea = txtDescripcionTarea.Text;
                 string estadoTarea = cboxEstadoTarea.SelectedItem.ToString();
-                string categoriaTarea = cboxCategoriaTarea.SelectedItem.ToString();  
+                string categoriaTarea = cboxCategoriaTarea.SelectedItem.ToString();
 
                 int categoriaId = ObtenerCategoriaId(categoriaTarea);
 
                 if (categoriaId == -1)
                 {
                     MessageBox.Show("La categoría seleccionada no existe. Por favor, selecciona una categoría válida.");
-                    return;  
+                    return;
                 }
 
                 int estadoId = ObtenerEstadoId(estadoTarea);
 
-                int usuarioId = 1;  
+                int usuarioId = usuarioActual;
 
                 string query = "INSERT INTO Tareas (titulo, descripcion, categoriaId, usuarioId, estadoId) " +
                                "VALUES (@titulo, @descripcion, @categoriaId, @usuarioId, @estadoId)";
@@ -80,9 +84,9 @@ namespace InterfacesGraficas
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@titulo", nombreTarea);
                     cmd.Parameters.AddWithValue("@descripcion", descripcionTarea);
-                    cmd.Parameters.AddWithValue("@categoriaId", categoriaId); 
+                    cmd.Parameters.AddWithValue("@categoriaId", categoriaId);
                     cmd.Parameters.AddWithValue("@usuarioId", usuarioId); 
-                    cmd.Parameters.AddWithValue("@estadoId", estadoId); 
+                    cmd.Parameters.AddWithValue("@estadoId", estadoId);
 
                     try
                     {
@@ -93,8 +97,8 @@ namespace InterfacesGraficas
                         txtNombreTarea.Text = "";
                         txtDescripcionTarea.Text = "";
                         cboxEstadoTarea.SelectedIndex = 0;
-                        CargarEstados();  
-                        CargarTareas();  
+                        CargarEstados();
+                        CargarTareas();
                     }
                     catch (Exception ex)
                     {
@@ -104,9 +108,48 @@ namespace InterfacesGraficas
             }
         }
 
-        public void CargarCategorias()
+        private void CargarTareas()
         {
-            string query = "SELECT id, nombre FROM Categorias";  
+            string query = "SELECT t.titulo, t.descripcion, e.nombreEstado, c.nombre FROM Tareas t " +
+                           "JOIN Estados e ON t.estadoId = e.id " +
+                           "JOIN Categorias c ON t.categoriaId = c.id " +
+                           "WHERE t.usuarioId = @usuarioId"; 
+
+            using (SqlConnection conn = new SqlConnection(conexiondb.ObtenerCadenaConexion()))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                adapter.SelectCommand.Parameters.AddWithValue("@usuarioId", usuarioActual); 
+                DataTable dt = new DataTable();
+
+                try
+                {
+                    conn.Open();
+                    adapter.Fill(dt);
+
+                    dgvTablaTareas.Rows.Clear();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dgvTablaTareas.Rows.Add(
+                            row["titulo"],
+                            row["nombre"],
+                            row["descripcion"],
+                            row["nombreEstado"],
+                            "Editar",
+                            "Borrar"
+                        );
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar tareas: " + ex.Message);
+                }
+            }
+        }
+
+        private void CargarCategorias()
+        {
+            string query = "SELECT id, nombre FROM Categorias";
 
             using (SqlConnection conn = new SqlConnection(conexiondb.ObtenerCadenaConexion()))
             {
@@ -122,7 +165,7 @@ namespace InterfacesGraficas
 
                     while (reader.Read())
                     {
-                        string categoria = reader["nombre"].ToString();  
+                        string categoria = reader["nombre"].ToString();
                         cboxCategoriaTarea.Items.Add(categoria);
                     }
 
@@ -140,10 +183,9 @@ namespace InterfacesGraficas
             }
         }
 
-
         private void CargarEstados()
         {
-            string query = "SELECT id, nombreEstado FROM Estados";  
+            string query = "SELECT id, nombreEstado FROM Estados";
 
             using (SqlConnection conn = new SqlConnection(conexiondb.ObtenerCadenaConexion()))
             {
@@ -159,7 +201,7 @@ namespace InterfacesGraficas
 
                     while (reader.Read())
                     {
-                        string estado = reader["nombreEstado"].ToString();  
+                        string estado = reader["nombreEstado"].ToString();
                         cboxEstadoTarea.Items.Add(estado);
                     }
 
@@ -177,7 +219,6 @@ namespace InterfacesGraficas
             }
         }
 
-
         private int ObtenerEstadoId(string estado)
         {
             string query = "SELECT id FROM Estados WHERE nombreEstado = @estado";
@@ -191,14 +232,61 @@ namespace InterfacesGraficas
                 {
                     conn.Open();
                     object result = cmd.ExecuteScalar();
-                    return result != null ? Convert.ToInt32(result) : 1; 
+                    return result != null ? Convert.ToInt32(result) : 1;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error al obtener el estado: " + ex.Message);
-                    return 1; 
+                    return 1;
                 }
             }
+        }
+
+        private string ObtenerNombreUsuario(int usuarioId)
+        {
+            string query = "SELECT nombreUsuario FROM Usuarios WHERE id = @usuarioId";
+
+            using (SqlConnection conn = new SqlConnection(conexiondb.ObtenerCadenaConexion()))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@usuarioId", usuarioId);
+
+                try
+                {
+                    conn.Open();
+                    object result = cmd.ExecuteScalar();
+                    return result != null ? result.ToString() : string.Empty;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al obtener el nombre de usuario: " + ex.Message);
+                    return string.Empty;
+                }
+            }
+        }
+
+        private void btnNuevaCategoria_Click(object sender, EventArgs e)
+        {
+            agregarCategoria categoria = new agregarCategoria();
+            categoria.Show();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Login inisesion = new Login();
+
+            DialogResult result = MessageBox.Show(
+                    "¿Estás seguro de que deseas cerrar sesión?",
+                    "Confirmar Cierre de Sesion",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                inisesion.Show();
+                this.Close();
+            }
+            
         }
 
         private void dgvTablaTareas_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -253,8 +341,8 @@ namespace InterfacesGraficas
 
                     string tareaSeleccionada = fila.Cells[0].Value.ToString();
                     string categoriaSeleccionada = fila.Cells[1].Value.ToString();
-                    string descripcionSeleccionada = fila.Cells[2].Value.ToString();  
-                    string estadoSeleccionado = fila.Cells[3].Value.ToString();  
+                    string descripcionSeleccionada = fila.Cells[2].Value.ToString();
+                    string estadoSeleccionado = fila.Cells[3].Value.ToString();
                     editarRegistro editarForm = new editarRegistro(fila, tareaSeleccionada, descripcionSeleccionada, estadoSeleccionado, categoriaSeleccionada);
                     editarForm.Show();
                 }
@@ -266,47 +354,9 @@ namespace InterfacesGraficas
 
         }
 
-        private void CargarTareas()
+        private void PantallaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            string query = "SELECT t.titulo, t.descripcion, e.nombreEstado, c.nombre FROM Tareas t " +
-                           "JOIN Estados e ON t.estadoId = e.id " +
-                           "JOIN Categorias c ON t.categoriaId = c.id";
-
-            using (SqlConnection conn = new SqlConnection(conexiondb.ObtenerCadenaConexion()))
-            {
-                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-
-                try
-                {
-                    conn.Open();
-                    adapter.Fill(dt);
-
-                    dgvTablaTareas.Rows.Clear();
-
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        dgvTablaTareas.Rows.Add(
-                            row["titulo"],          
-                            row["nombre"],          
-                            row["descripcion"],     
-                            row["nombreEstado"],    
-                            "Editar",               
-                            "Borrar"                
-                        );
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al cargar tareas: " + ex.Message);
-                }
-            }
-        }
-
-        private void btnNuevaCategoria_Click(object sender, EventArgs e)
-        {
-            agregarCategoria categoria = new agregarCategoria();
-            categoria.Show();
+            Application.Exit();
         }
     }
 }
